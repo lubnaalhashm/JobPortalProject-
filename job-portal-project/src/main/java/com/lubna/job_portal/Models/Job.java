@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table (name = "job")
+@Table(name = "job")
 public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +21,14 @@ public class Job {
     @Column(nullable = false)
     private String description;
 
-
+    @NotBlank(message = "Location is mandatory ")
+    @Column(nullable = false, columnDefinition = "Varchar(255) defualt 'Remote'")
     private String location;
+
+    @NotBlank(message = "Salary must be positive")
+    @Column(nullable = false)
     private double salary;
+
 
 }
 
