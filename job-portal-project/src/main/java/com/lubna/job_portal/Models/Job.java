@@ -12,13 +12,16 @@ import java.util.List;
 @Data
 @Table(name = "jobs")
 public class Job extends BaseEntity {
+    @ManyToOne
+    @JoinColumn(name = "recruiter_id", nullable = false)
+    private User recruiter; // The user who posted the job
 
     @NotBlank(message = "Title is mandatory")
     @Column(nullable = false)
     private String title;
 
     @NotBlank(message = "Description is mandatory")
-    @Column(nullable = false)
+    @Column(nullable = false,  columnDefinition = "TEXT")
     private String description;
 
     @NotBlank(message = "Location is mandatory")
@@ -32,8 +35,23 @@ public class Job extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private JobType jobType;
+    private boolean isActive; 
 
     public enum JobType {
         FULL_TIME, PART_TIME, CONTRACT, INTERNSHIP
+    }
+
+    // Constructors
+    public Job() {
+    }
+
+    public Job(User recruiter, String title, String description, String location, Double salary, JobType jobType) {
+        this.recruiter = recruiter;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.salary = salary;
+        this.jobType = jobType;
+        this.isActive = true; // Default active status
     }
 }
