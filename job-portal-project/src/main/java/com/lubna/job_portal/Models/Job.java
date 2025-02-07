@@ -35,7 +35,7 @@ public class Job extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private JobType jobType;
-    private boolean isActive; 
+    private boolean isActive;
 
     public enum JobType {
         FULL_TIME, PART_TIME, CONTRACT, INTERNSHIP
