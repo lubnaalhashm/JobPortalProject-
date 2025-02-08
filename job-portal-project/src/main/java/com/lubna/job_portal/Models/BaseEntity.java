@@ -2,8 +2,6 @@ package com.lubna.job_portal.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-
 import java.time.LocalDateTime;
 
 @MappedSuperclass
