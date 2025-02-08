@@ -8,7 +8,10 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
-    @Query("SELECT u FROM User u WHERE u.email = :email AND u.isActive = true")
+    @Query("SELECT u from User u where u.email = :email and u.isActive = true")
     Optional<User> findByEmail(@Param("email") String email);
+
+    @Query("SELECT count(u) > 0 from User u where u.email = :email and u.isActive = true")
+    boolean existsByEmail(@Param("email") String email);
 
 }
