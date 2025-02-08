@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 import java.util.List;
 
@@ -36,9 +36,10 @@ public class Job extends BaseEntity {
     @Column(nullable = false)
     private JobType jobType;
     private boolean isActive;
+    private List<JobApplication> applications;
 
     public enum JobType {
-        FULL_TIME, PART_TIME, CONTRACT, INTERNSHIP
+        full_time, part_time, contract, internship
     }
 
     // Constructors

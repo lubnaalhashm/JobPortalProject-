@@ -22,7 +22,6 @@ public class JobApplication extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ApplicationStatus status; 
-
     private LocalDateTime appliedAt;
 
     // Enum for application status
