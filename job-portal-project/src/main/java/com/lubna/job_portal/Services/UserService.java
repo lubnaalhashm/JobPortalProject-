@@ -31,7 +31,7 @@ public class UserService {
     }
 
     public UserDTO addUser(UserDTO dto) {
-        if (dto == null || dto.getEmail() == null || dto.getPassword() == null) {
+        if (HelperUtils.isNull(dto) || HelperUtils.isNull(dto.getEmail()) || HelperUtils.isNull(dto.getPassword())) {
             return new UserDTO();
         }
         if (userRepository.existsByEmail(dto.getEmail())) {
@@ -44,6 +44,7 @@ public class UserService {
         User savedUser = userRepository.save(entity);
         return UserDTO.convertToDTO(savedUser);
     }
+
     public UserDTO updateUser(UserDTO dto) {
         if (dto == null || dto.getId() == null) {
             return new UserDTO();
