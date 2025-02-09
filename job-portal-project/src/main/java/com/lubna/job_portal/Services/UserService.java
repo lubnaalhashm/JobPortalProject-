@@ -73,6 +73,14 @@ public class UserService {
         userRepository.save(user);
         return true;
     }
+
+    public UserDTO getUserByEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            return new UserDTO();
+        }
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        return optionalUser.map(UserDTO::convertToDTO).orElse(new UserDTO());
+    }
     
 }
 
