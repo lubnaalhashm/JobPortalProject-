@@ -92,5 +92,14 @@ public class UserController {
             return new UserDTO();
         }
     }
-
+    @PostMapping(value = "changeActiveStatus")
+    public Boolean changeUserActiveStatus(@RequestBody UserDTO dto) {
+        try {
+            return userService.changeUserActiveStatus(dto.getId(), dto.getIsActive());
+        } catch (Exception e) {
+            logger.error("Error while changing user active status: {}", e.getMessage());
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
