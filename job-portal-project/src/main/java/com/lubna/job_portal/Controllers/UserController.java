@@ -73,4 +73,14 @@ public class UserController {
             return false;
         }
     }
+    @GetMapping(value = "checkUserExists")
+    public Boolean checkIfUserExistsByEmail(@RequestParam String email) {
+        try {
+            return userService.checkIfUserExistsByEmail(email);
+        } catch (Exception e) {
+            logger.error("Error while checking user existence: {}", e.getMessage());
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
