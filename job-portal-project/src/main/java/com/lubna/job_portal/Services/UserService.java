@@ -46,7 +46,7 @@ public class UserService {
     }
 
     public UserDTO updateUser(UserDTO dto) {
-        if (dto == null || dto.getId() == null) {
+        if (HelperUtils.isNull(dto) || HelperUtils.isNull(dto.getId())) {
             return new UserDTO();
         }
         Optional<User> optionalUser = userRepository.findById(dto.getId());
@@ -54,18 +54,13 @@ public class UserService {
             return new UserDTO();
         }
         User entity = optionalUser.get();
-        if (dto.getEmail() != null && !dto.getEmail().isEmpty()) {
-            entity.setEmail(dto.getEmail());
-        }
-        if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
-            entity.setPassword(dto.getPassword());
-        }
-        if (dto.getUsername() != null && !dto.getUsername().isEmpty()) {
-            entity.setUsername(dto.getUsername());
-        }
+        entity.setEmail(HelperUtils.checkEquals(entity.getEmail(), dto.getEmail()));
+        entity.setPassword(HelperUtils.checkEquals(entity.getPassword(), dto.getPassword()));
+        entity.setUsername(HelperUtils.checkEquals(entity.getUsername(), dto.getUsername()));
         User updatedUser = userRepository.save(entity);
         return UserDTO.convertToDTO(updatedUser);
     }
+    
     public Boolean deleteUser(Integer id) {
         if (id == null) {
             return false;
