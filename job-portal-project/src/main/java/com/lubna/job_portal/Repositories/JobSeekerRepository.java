@@ -15,7 +15,11 @@ public interface JobSeekerRepository extends JpaRepository<JobSeeker, Integer> {
     // Find a job Seeker by their associated user ID
     Optional<JobSeeker> findByUserId(Integer userId);
 
-    // Custom query to find job Seekers by phone number
+    // Write query to find job Seekers by phone number
     @Query("SELECT js from JobSeeker js where js.phoneNumber = :phoneNumber")
     Optional<JobSeeker> findByPhoneNumber(String phoneNumber);
+
+    // Write query to find jobSeekers by email
+    @Query("SELECT js from JobSeeker js where js.user.email = :email")
+    Optional<JobSeeker> findByUserEmail(String email);
 }
