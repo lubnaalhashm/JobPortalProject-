@@ -39,5 +39,26 @@ public class UserService {
         User savedUser = userRepository.save(entity);
         return UserDTO.convertToDTO(savedUser);
     }
+    public UserDTO updateUser(UserDTO dto) {
+        if (dto == null || dto.getId() == null) {
+            return new UserDTO();
+        }
+        Optional<User> optionalUser = userRepository.findById(dto.getId());
+        if (optionalUser.isEmpty()) {
+            return new UserDTO();
+        }
+        User entity = optionalUser.get();
+        if (dto.getEmail() != null && !dto.getEmail().isEmpty()) {
+            entity.setEmail(dto.getEmail());
+        }
+        if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
+            entity.setPassword(dto.getPassword());
+        }
+        if (dto.getUsername() != null && !dto.getUsername().isEmpty()) {
+            entity.setUsername(dto.getUsername());
+        }
+        User updatedUser = userRepository.save(entity);
+        return UserDTO.convertToDTO(updatedUser);
+    }
 }
 
