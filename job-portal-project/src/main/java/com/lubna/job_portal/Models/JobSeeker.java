@@ -14,7 +14,7 @@ public class JobSeeker {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User userId;
+    private User user;
 
     private String resumeUrl;
     private String portfolioUrl;
@@ -24,7 +24,7 @@ public class JobSeeker {
     public JobSeeker() {}
 
     public JobSeeker(User user, String resumeUrl, String phoneNumber, String address) {
-        this.userId = user;
+        this.user = user;
         this.resumeUrl = resumeUrl;
         this.phoneNumber = phoneNumber;
         this.address = address;
