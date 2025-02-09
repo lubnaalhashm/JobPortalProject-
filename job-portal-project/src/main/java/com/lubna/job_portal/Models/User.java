@@ -21,14 +21,14 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Role role;
 
-  private String username;
-
+    private String username;
     private boolean isActive = true; // Default active status
 
     // Enum for user roles
 
     // Constructors
-    public User() {}
+    public User() {
+    }
 
     public User(String email, String password, Role role, String firstName, String lastName) {
         this.email = email;
