@@ -1,18 +1,44 @@
 package com.lubna.job_portal.Controllers;
 
 
+import com.lubna.job_portal.DTOs.UserDTO;
 import com.lubna.job_portal.Services.UserService;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @RestController
 @RequestMapping(value = "user")
 public class UserController {
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
+
+    @GetMapping(value = "getAll")
+    public List<UserDTO> getAllUsers() {
+        List<UserDTO> userDTOList = new ArrayList<>();
+        try {
+            userDTOList.addAll(userService.getAllUser());
+        } catch (Exception e) {
+            logger.error("Error while fetching all users: {}", e.getMessage());
+        }
+        return userDTOList;
+    }
+
+    @GetMapping(value = "getById")
+    public UserDTO getUserById(@RequestParam(value = "userId") Integer id) {
+        try {
+            return userService.getUserById(id);
+        } catch (Exception e) {
+            logger.error("Error while fetching user by ID: {}", e.getMessage());
+            return new UserDTO();
+        }
+    }
 }
