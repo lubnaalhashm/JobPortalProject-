@@ -23,8 +23,8 @@ public class UserDTO {
             userDto.setId(user.getId());
             userDto.setEmail(user.getEmail());
             userDto.setPassword(user.getPassword());
-            userDto.setUsername(userDto.getUsername());
-            userDto.setIsActive(userDto.getIsActive());
+            userDto.setUsername(user.getUsername());
+            userDto.setIsActive(user.isActive());
         }
         return userDto;
     }
