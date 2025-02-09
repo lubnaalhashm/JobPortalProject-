@@ -60,9 +60,9 @@ public class UserService {
         User updatedUser = userRepository.save(entity);
         return UserDTO.convertToDTO(updatedUser);
     }
-    
+
     public Boolean deleteUser(Integer id) {
-        if (id == null) {
+        if (HelperUtils.isNull(id)) {
             return false;
         }
         Optional<User> optionalUser = userRepository.findById(id);
@@ -74,16 +74,24 @@ public class UserService {
         userRepository.save(user);
         return true;
     }
+    
+    public Boolean checkIfUserExistsByEmail(String email) {
+        if (HelperUtils.isNull(email)) {
+            return false;
+        }
+        return userRepository.existsByEmail(email);
+    }
 
     public UserDTO getUserByEmail(String email) {
-        if (email == null || email.isEmpty()) {
+        if (HelperUtils.isNull(email)) {
             return new UserDTO();
         }
         Optional<User> optionalUser = userRepository.findByEmail(email);
         return optionalUser.map(UserDTO::convertToDTO).orElse(new UserDTO());
     }
+
     public Boolean changeUserActiveStatus(Integer id, boolean isActive) {
-        if (id == null) {
+        if (HelperUtils.isNull(id)) {
             return false;
         }
         Optional<User> optionalUser = userRepository.findById(id);
