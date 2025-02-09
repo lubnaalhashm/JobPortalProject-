@@ -21,13 +21,11 @@ public class JobApplication extends BaseEntity {
     private String coverLetter;
 
     @Enumerated(EnumType.STRING)
-    private ApplicationStatus status; 
-    private LocalDateTime appliedAt;
+    @Column
+    private ApplicationStatus status;
 
-    // Enum for application status
-    public enum ApplicationStatus {
-        PENDING, ACCEPTED, REJECTED
-    }
+    @Column
+    private LocalDateTime appliedAt;
 
     // Constructors
     public JobApplication() {
