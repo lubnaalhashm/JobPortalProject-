@@ -20,7 +20,7 @@ public class JobSeekerDTO {
         JobSeekerDTO jobSeekerDto = new JobSeekerDTO();
         if (jobSeeker != null) {
             jobSeekerDto.setId(jobSeeker.getId());
-            jobSeekerDto.setUser(UserDTO.convertToDTO(jobSeeker.getUserId())); // Convert nested User entity
+            jobSeekerDto.setUser(UserDTO.convertToDTO(jobSeeker.getUser())); // Convert nested User entity
             jobSeekerDto.setResumeUrl(jobSeeker.getResumeUrl());
             jobSeekerDto.setPortfolioUrl(jobSeeker.getPortfolioUrl());
             jobSeekerDto.setPhoneNumber(jobSeeker.getPhoneNumber());
@@ -41,7 +41,7 @@ public class JobSeekerDTO {
         JobSeeker jobSeeker = new JobSeeker();
         if (jobSeekerDto != null) {
             jobSeeker.setId(jobSeekerDto.getId());
-            jobSeeker.setUserId(UserDTO.convertFromDTO(jobSeekerDto.getUser())); // Convert nested User DTO
+            jobSeeker.setUser(UserDTO.convertFromDTO(jobSeekerDto.getUser())); // Convert nested User DTO
             jobSeeker.setResumeUrl(jobSeekerDto.getResumeUrl());
             jobSeeker.setPortfolioUrl(jobSeekerDto.getPortfolioUrl());
             jobSeeker.setPhoneNumber(jobSeekerDto.getPhoneNumber());
