@@ -52,4 +52,15 @@ public class UserController {
         }
         return userDTO;
     }
+    @PostMapping(value = "update")
+    public UserDTO updateUser(@RequestBody UserDTO dto) {
+        UserDTO userDTO = new UserDTO();
+        try {
+            userDTO = userService.updateUser(dto);
+        } catch (Exception e) {
+            logger.error("Error while updating user: {}", e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        return userDTO;
+    }
 }
