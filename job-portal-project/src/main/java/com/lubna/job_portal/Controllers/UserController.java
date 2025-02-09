@@ -83,4 +83,14 @@ public class UserController {
             return false;
         }
     }
+    @GetMapping(value = "getByEmail")
+    public UserDTO getUserByEmail(@RequestParam String email) {
+        try {
+            return userService.getUserByEmail(email);
+        } catch (Exception e) {
+            logger.error("Error while fetching user by email: {}", e.getMessage());
+            return new UserDTO();
+        }
+    }
+
 }
