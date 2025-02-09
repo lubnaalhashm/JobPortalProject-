@@ -3,6 +3,7 @@ package com.lubna.job_portal.Services;
 import com.lubna.job_portal.DTOs.UserDTO;
 import com.lubna.job_portal.Models.User;
 import com.lubna.job_portal.Repositories.UserRepository;
+import com.lubna.job_portal.Utils.HelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,13 @@ public class UserService {
     }
 
     public UserDTO getUserById(Integer id) {
+        if (HelperUtils.isNull(id)) {
+            return new UserDTO();
+        }
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser.map(UserDTO::convertToDTO).orElse(new UserDTO());
     }
+
     public UserDTO addUser(UserDTO dto) {
         if (dto == null || dto.getEmail() == null || dto.getPassword() == null) {
             return new UserDTO();
