@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -17,8 +18,13 @@ public class UserService {
     //Get all users
     public List<UserDTO> getAllUser() {
         List<User> users = userRepository.findAll();
-
         return UserDTO.convertToDTO(users);
     }
+
+    public UserDTO getUserById(Integer id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        return optionalUser.map(UserDTO::convertToDTO).orElse(new UserDTO());
+    }
+
 }
 
