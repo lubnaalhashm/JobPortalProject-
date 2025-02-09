@@ -60,5 +60,19 @@ public class UserService {
         User updatedUser = userRepository.save(entity);
         return UserDTO.convertToDTO(updatedUser);
     }
+    public Boolean deleteUser(Integer id) {
+        if (id == null) {
+            return false;
+        }
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            return false;
+        }
+        User user = optionalUser.get();
+        user.setActive(false);
+        userRepository.save(user);
+        return true;
+    }
+    
 }
 
