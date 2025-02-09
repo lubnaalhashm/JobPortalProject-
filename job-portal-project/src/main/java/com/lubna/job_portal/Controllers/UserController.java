@@ -41,4 +41,15 @@ public class UserController {
             return new UserDTO();
         }
     }
+    @PostMapping(value = "add")
+    public UserDTO addUser(@RequestBody UserDTO dto) {
+        UserDTO userDTO = new UserDTO();
+        try {
+            userDTO = userService.addUser(dto);
+        } catch (Exception e) {
+            logger.error("Error while adding user: {}", e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        return userDTO;
+    }
 }
