@@ -1,69 +1,61 @@
 package com.lubna.job_portal.DTOs;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.lubna.job_portal.Models.JobSeeker;
+import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
 public class JobSeekerDTO {
     private Integer id;
-    private String name;
+    private UserDTO user;
     private String email;
     private String resumeUrl;
     private String portfolioUrl;
     private String phoneNumber;
     private String address;
 
-    public Integer getId() {
-        return id;
+    public static JobSeekerDTO convertToDTO(JobSeeker jobSeeker) {
+        JobSeekerDTO jobSeekerDto = new JobSeekerDTO();
+        if (jobSeeker != null) {
+            jobSeekerDto.setId(jobSeeker.getId());
+            jobSeekerDto.setUser(UserDTO.convertToDTO(jobSeeker.getUser())); // Convert nested User entity
+            jobSeekerDto.setResumeUrl(jobSeeker.getResumeUrl());
+            jobSeekerDto.setPortfolioUrl(jobSeeker.getPortfolioUrl());
+            jobSeekerDto.setPhoneNumber(jobSeeker.getPhoneNumber());
+            jobSeekerDto.setAddress(jobSeeker.getAddress());
+        }
+        return jobSeekerDto;
     }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public static List<JobSeekerDTO> convertToDTO(List<JobSeeker> jobSeekerList) {
+        List<JobSeekerDTO> jobSeekerDtoList = new ArrayList<>();
+        if (jobSeekerList != null && !jobSeekerList.isEmpty()) {
+            for (JobSeeker jobSeeker : jobSeekerList) {
+                jobSeekerDtoList.add(convertToDTO(jobSeeker));
+            }
+        }
+        return jobSeekerDtoList;
     }
-
-    public String getName() {
-        return name;
+    public static JobSeeker convertFromDTO(JobSeekerDTO jobSeekerDto) {
+        JobSeeker jobSeeker = new JobSeeker();
+        if (jobSeekerDto != null) {
+            jobSeeker.setId(jobSeekerDto.getId());
+            jobSeeker.setUser(UserDTO.convertFromDTO(jobSeekerDto.getUser())); // Convert nested User DTO
+            jobSeeker.setResumeUrl(jobSeekerDto.getResumeUrl());
+            jobSeeker.setPortfolioUrl(jobSeekerDto.getPortfolioUrl());
+            jobSeeker.setPhoneNumber(jobSeekerDto.getPhoneNumber());
+            jobSeeker.setAddress(jobSeekerDto.getAddress());
+        }
+        return jobSeeker;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getResumeUrl() {
-        return resumeUrl;
-    }
-
-    public void setResumeUrl(String resumeUrl) {
-        this.resumeUrl = resumeUrl;
-    }
-
-    public String getPortfolioUrl() {
-        return portfolioUrl;
-    }
-
-    public void setPortfolioUrl(String portfolioUrl) {
-        this.portfolioUrl = portfolioUrl;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public static List<JobSeeker> convertFromDTO(List<JobSeekerDTO> jobSeekerDtoList) {
+        List<JobSeeker> jobSeekerList = new ArrayList<>();
+        if (jobSeekerDtoList != null && !jobSeekerDtoList.isEmpty()) {
+            for (JobSeekerDTO dto : jobSeekerDtoList) {
+                jobSeekerList.add(convertFromDTO(dto));
+            }
+        }
+        return jobSeekerList;
     }
 }
