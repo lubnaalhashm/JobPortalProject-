@@ -70,11 +70,11 @@ public class UserService {
             return false;
         }
         User user = optionalUser.get();
-        user.setActive(false);
+        user.setIsActive(false);
         userRepository.save(user);
         return true;
     }
-    
+
     public Boolean checkIfUserExistsByEmail(String email) {
         if (HelperUtils.isNull(email)) {
             return false;
@@ -99,7 +99,7 @@ public class UserService {
             return false;
         }
         User user = optionalUser.get();
-        user.setActive(isActive);
+        user.setIsActive(isActive);
         userRepository.save(user);
         return true;
     }
