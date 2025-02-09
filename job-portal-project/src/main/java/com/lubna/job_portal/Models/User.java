@@ -22,7 +22,7 @@ public class User extends BaseEntity {
     private Role role;
 
     private String username;
-    private boolean isActive = true; // Default active status
+    private Boolean isActive = true; // Default active status
 
     // Enum for user roles
 
@@ -30,11 +30,12 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(String email, String password, Role role, String firstName, String lastName) {
+    public User(String email, String password, Role role, String firstName) {
+        this.username = firstName;
         this.email = email;
         this.password = password;
+        this.isActive = true;
         this.role = role;
-        this.username = firstName;
 
     }
 }
