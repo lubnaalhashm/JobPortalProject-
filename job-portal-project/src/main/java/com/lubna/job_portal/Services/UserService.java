@@ -81,6 +81,18 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         return optionalUser.map(UserDTO::convertToDTO).orElse(new UserDTO());
     }
-    
+    public Boolean changeUserActiveStatus(Integer id, boolean isActive) {
+        if (id == null) {
+            return false;
+        }
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            return false;
+        }
+        User user = optionalUser.get();
+        user.setActive(isActive);
+        userRepository.save(user);
+        return true;
+    }
 }
 
