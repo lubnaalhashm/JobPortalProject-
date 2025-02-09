@@ -24,7 +24,7 @@ public class UserDTO {
             userDto.setEmail(user.getEmail());
             userDto.setPassword(user.getPassword());
             userDto.setUsername(user.getUsername());
-            userDto.setIsActive(user.isActive());
+            userDto.setIsActive(user.getIsActive());
         }
         return userDto;
     }
@@ -43,8 +43,8 @@ public class UserDTO {
             user.setId(userDto.getId());
             user.setEmail(userDto.getEmail());
             user.setPassword(userDto.getPassword());
-            userDto.setUsername(userDto.getUsername());
-            userDto.setIsActive(userDto.getIsActive());
+            user.setUsername(userDto.getUsername());
+            user.setIsActive(userDto.getIsActive());
         }
         return user;
     }
