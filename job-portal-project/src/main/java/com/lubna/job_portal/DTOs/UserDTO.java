@@ -4,6 +4,7 @@ import com.lubna.job_portal.Models.User;
 import lombok.Data;
 
 
+import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class UserDTO {
     private String username;
     private String email;
     private String password;
+    private Boolean isActive;
+
 
     public static UserDTO convertToDTO(User user) {
         UserDTO userDto = new UserDTO();
@@ -21,6 +24,7 @@ public class UserDTO {
             userDto.setEmail(user.getEmail());
             userDto.setPassword(user.getPassword());
             userDto.setUsername(userDto.getUsername());
+            userDto.setIsActive(userDto.getIsActive());
         }
         return userDto;
     }
@@ -40,6 +44,7 @@ public class UserDTO {
             user.setEmail(userDto.getEmail());
             user.setPassword(userDto.getPassword());
             userDto.setUsername(userDto.getUsername());
+            userDto.setIsActive(userDto.getIsActive());
         }
         return user;
     }
