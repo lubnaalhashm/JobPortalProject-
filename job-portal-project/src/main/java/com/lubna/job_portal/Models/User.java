@@ -21,16 +21,11 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Role role;
 
-    private String firstName;
-
-    private String lastName;
+  private String username;
 
     private boolean isActive = true; // Default active status
 
     // Enum for user roles
-    public enum Role {
-        admin, Employee, Jop_Seeker
-    }
 
     // Constructors
     public User() {}
@@ -39,7 +34,7 @@ public class User extends BaseEntity {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.username = firstName;
+
     }
 }
