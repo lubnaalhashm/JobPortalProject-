@@ -36,7 +36,7 @@ public class Job extends BaseEntity {
     @Column(nullable = false)
     private JobType jobType;
     private boolean isActive;
-    private List<JobApplication> applications;
+
 
     public enum JobType {
         full_time, part_time, contract, internship
