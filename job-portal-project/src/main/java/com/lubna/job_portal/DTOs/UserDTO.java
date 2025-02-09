@@ -1,42 +1,55 @@
 package com.lubna.job_portal.DTOs;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.lubna.job_portal.Models.User;
+import lombok.Data;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
 public class UserDTO {
     private Integer id;
     private String username;
     private String email;
     private String password;
 
-    public Integer getId() {
-        return id;
+    public static UserDTO convertToDTO(User user) {
+        UserDTO userDto = new UserDTO();
+        if (user != null) {
+            userDto.setId(user.getId());
+            userDto.setEmail(user.getEmail());
+            userDto.setPassword(user.getPassword());
+            userDto.setUsername(userDto.getUsername());
+        }
+        return userDto;
     }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public static List<UserDTO> convertToDTO(List<User> userList) {
+        List<UserDTO> userDtoList = new ArrayList<>();
+        if (userList != null && !userList.isEmpty()) {
+            for (User user : userList) {
+                userDtoList.add(convertToDTO(user));
+            }
+        }
+        return userDtoList;
     }
-
-    public String getUsername() {
-        return username;
+    public static User convertFromDTO(UserDTO userDto) {
+        User user = new User();
+        if (userDto != null) {
+            user.setId(userDto.getId());
+            user.setEmail(userDto.getEmail());
+            user.setPassword(userDto.getPassword());
+            userDto.setUsername(userDto.getUsername());
+        }
+        return user;
     }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public static List<User> convertFromDTO(List<UserDTO> userDtoList) {
+        List<User> userList = new ArrayList<>();
+        if (userDtoList != null && !userDtoList.isEmpty()) {
+            for (UserDTO dto : userDtoList) {
+                userList.add(convertFromDTO(dto));
+            }
+        }
+        return userList;
     }
 }
