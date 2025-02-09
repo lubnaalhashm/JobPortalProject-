@@ -25,6 +25,19 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser.map(UserDTO::convertToDTO).orElse(new UserDTO());
     }
-
+    public UserDTO addUser(UserDTO dto) {
+        if (dto == null || dto.getEmail() == null || dto.getPassword() == null) {
+            return new UserDTO();
+        }
+        if (userRepository.existsByEmail(dto.getEmail())) {
+            return new UserDTO();
+        }
+        User entity = new User();
+        entity.setEmail(dto.getEmail());
+        entity.setPassword(dto.getPassword());
+        entity.setUsername(dto.getUsername());
+        User savedUser = userRepository.save(entity);
+        return UserDTO.convertToDTO(savedUser);
+    }
 }
 
