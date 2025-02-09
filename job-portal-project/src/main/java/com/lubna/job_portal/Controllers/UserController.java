@@ -63,4 +63,14 @@ public class UserController {
         }
         return userDTO;
     }
+    @DeleteMapping(value = "delete")
+    public Boolean deleteUser(@RequestBody UserDTO dto) {
+        try {
+            return userService.deleteUser(dto.getId());
+        } catch (Exception e) {
+            logger.error("Error while deleting user: {}", e.getMessage());
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
