@@ -39,7 +39,8 @@ public class JobController {
             return null;
         }
     }
-    @PostMapping(value ="add")
+
+    @PostMapping(value = "add")
     public JobDTO addJob(@RequestBody JobDTO dto) {
         JobDTO entity = new JobDTO();
         try {
@@ -49,6 +50,7 @@ public class JobController {
         }
         return entity;
     }
+
     @PostMapping(value = "update")
     public JobDTO updateJob(@RequestBody JobDTO dto) {
         JobDTO entity = new JobDTO();
@@ -59,6 +61,7 @@ public class JobController {
         }
         return entity;
     }
+
     @DeleteMapping(value = "delete")
     public Boolean deleteJob(@RequestBody JobDTO dto) {
         try {
@@ -67,5 +70,16 @@ public class JobController {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    @GetMapping(value = "getActiveJobs")
+    public List<JobDTO> getActiveJobs() {
+        List<JobDTO> jobDtoList = new ArrayList<>();
+        try {
+            jobDtoList.addAll(jobService.getActiveJobs());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return jobDtoList;
     }
 }
