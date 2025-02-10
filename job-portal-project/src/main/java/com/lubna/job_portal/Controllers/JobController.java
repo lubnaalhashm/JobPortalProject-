@@ -59,5 +59,13 @@ public class JobController {
         }
         return entity;
     }
-
+    @DeleteMapping(value = "delete")
+    public Boolean deleteJob(@RequestBody JobDTO dto) {
+        try {
+            return jobService.deleteJob(dto.getId());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
