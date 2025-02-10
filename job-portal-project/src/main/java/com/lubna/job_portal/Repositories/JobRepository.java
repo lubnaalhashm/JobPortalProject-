@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface JobRepository extends JpaRepository<Job, Integer> {
+    boolean existsByTitle(String title);
+
     @Query(value = "SELECT count(j) > 0 from Job j where j.id = :jobId AND j.expiresAt > current_timestamp", nativeQuery = true)
     boolean isJobActive(@Param("jobId") Integer jobId);
 
