@@ -49,4 +49,15 @@ public class JobController {
         }
         return entity;
     }
+    @PostMapping(value = "update")
+    public JobDTO updateJob(@RequestBody JobDTO dto) {
+        JobDTO entity = new JobDTO();
+        try {
+            entity = jobService.updateJob(dto);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return entity;
+    }
+
 }
