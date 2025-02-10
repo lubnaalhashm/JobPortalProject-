@@ -59,5 +59,8 @@ public class JobService {
         return jobRepository.existsById(id);
     }
 
-    
+    public List<JobDTO> getActiveJobs() {
+        List<Job> activeJobs = jobRepository.findByIsActiveTrue();
+        return JobDTO.convertToDTO(activeJobs);
+    }
 }
