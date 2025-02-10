@@ -15,6 +15,6 @@ public interface JobRepository extends JpaRepository<Job, Integer> {
     boolean existsById(Integer id);
 
     // query to find active jobs
-    @Query("SELECT j FROM Job j WHERE j.isActive = true")
+    @Query("SELECT j from Job j where j.isActive = true")
     List<Job> findByIsActiveTrue();
 }
