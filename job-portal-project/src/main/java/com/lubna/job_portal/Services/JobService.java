@@ -43,7 +43,17 @@ public class JobService {
         return new JobDTO();
     }
 
-
+    public Boolean deleteJob(Integer id) {
+        if (HelperUtils.isNotNull(id) && checkIfJobExists(id)) {
+            Job job = jobRepository.findById(id).orElse(null);
+            if (job != null && job.isActive()) {
+                job.setActive(false); // Soft delete
+                jobRepository.save(job);
+                return true;
+            }
+        }
+        return false;
+    }
 
     public boolean checkIfJobExists(Integer id) {
         return jobRepository.existsById(id);
