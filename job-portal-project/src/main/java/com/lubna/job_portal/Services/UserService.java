@@ -76,6 +76,7 @@ public class UserService {
     }
 
     public Boolean checkIfUserExistsByEmail(String email) {
+        System.out.println("Email: " + email);
         if (HelperUtils.isNull(email)) {
             return false;
         }
@@ -102,11 +103,6 @@ public class UserService {
         user.setIsActive(isActive);
         userRepository.save(user);
         return true;
-    }
-
-    public List<UserDTO> getAllActiveUsers() {
-        List<User> activeUsers = userRepository.findByIsActiveTrue(); // Fetch active users
-        return UserDTO.convertToDTO(activeUsers); // Convert to DTO and return
     }
 
 }
