@@ -71,7 +71,7 @@ public class UserService {
         }
         User user = optionalUser.get();
         user.setIsActive(false);
-        userRepository.save(user);
+        userRepository.delete(user);
         return true;
     }
 
@@ -103,5 +103,12 @@ public class UserService {
         userRepository.save(user);
         return true;
     }
+
+    public List<UserDTO> getAllActiveUsers() {
+        List<User> activeUsers = userRepository.findByIsActiveTrue(); // Fetch active users
+        return UserDTO.convertToDTO(activeUsers); // Convert to DTO and return
+    }
+
 }
+
 
