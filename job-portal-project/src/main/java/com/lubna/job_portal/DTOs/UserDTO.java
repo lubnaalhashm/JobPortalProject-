@@ -39,7 +39,7 @@ public class UserDTO {
     }
     public static User convertFromDTO(UserDTO userDto) {
         User user = new User();
-        if (userDto != null) {
+        if (userDto != null)  {
             user.setId(userDto.getId());
             user.setEmail(userDto.getEmail());
             user.setPassword(userDto.getPassword());
