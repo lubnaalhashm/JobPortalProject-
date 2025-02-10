@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Data
-public abstract class BaseEntity {
+public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
