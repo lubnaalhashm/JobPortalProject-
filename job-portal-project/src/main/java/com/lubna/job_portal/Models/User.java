@@ -17,9 +17,9 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING) // Use EnumType.STRING for storing role as a string in the database
+   /* @Enumerated(EnumType.STRING) // Use EnumType.STRING for storing role as a string in the database
     @Column(nullable = false)
-    private Role role;
+    private Role role;*/
 
     private String username;
     private Boolean isActive = true; // Default active status
@@ -28,14 +28,14 @@ public class User extends BaseEntity {
 
     // Constructors
     public User() {
+        this.isActive = true;
     }
 
     public User(String email, String password, Role role, String firstName) {
         this.username = firstName;
         this.email = email;
         this.password = password;
-        this.isActive = true;
-        this.role = role;
+       // this.role = role;
 
     }
 }
