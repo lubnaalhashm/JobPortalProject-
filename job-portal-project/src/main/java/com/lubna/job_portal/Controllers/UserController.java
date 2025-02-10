@@ -32,6 +32,7 @@ public class UserController {
         return userDTOList;
     }
 
+
     @GetMapping(value = "getById")
     public UserDTO getUserById(@RequestParam(value = "userId") Integer id) {
         try {
@@ -41,6 +42,7 @@ public class UserController {
             return new UserDTO();
         }
     }
+
     @PostMapping(value = "add")
     public UserDTO addUser(@RequestBody UserDTO dto) {
         UserDTO userDTO = new UserDTO();
@@ -52,6 +54,7 @@ public class UserController {
         }
         return userDTO;
     }
+
     @PostMapping(value = "update")
     public UserDTO updateUser(@RequestBody UserDTO dto) {
         UserDTO userDTO = new UserDTO();
@@ -63,6 +66,7 @@ public class UserController {
         }
         return userDTO;
     }
+
     @DeleteMapping(value = "delete")
     public Boolean deleteUser(@RequestBody UserDTO dto) {
         try {
@@ -73,6 +77,7 @@ public class UserController {
             return false;
         }
     }
+
     @GetMapping(value = "checkUserExists")
     public Boolean checkIfUserExistsByEmail(@RequestParam String email) {
         try {
@@ -83,6 +88,7 @@ public class UserController {
             return false;
         }
     }
+
     @GetMapping(value = "getByEmail")
     public UserDTO getUserByEmail(@RequestParam String email) {
         try {
@@ -92,6 +98,7 @@ public class UserController {
             return new UserDTO();
         }
     }
+
     @PostMapping(value = "changeActiveStatus")
     public Boolean changeUserActiveStatus(@RequestBody UserDTO dto) {
         try {
