@@ -71,7 +71,15 @@ public class JobController {
             return false;
         }
     }
-
+    @GetMapping(value = "checkJobAvailability")
+    public Boolean checkJobAvailability(@RequestParam String title) {
+        try {
+            return jobService.checkIfJobExistsByTitle(title);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
     @GetMapping(value = "getActiveJobs")
     public List<JobDTO> getActiveJobs() {
         List<JobDTO> jobDtoList = new ArrayList<>();
