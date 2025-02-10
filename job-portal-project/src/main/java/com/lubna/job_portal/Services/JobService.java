@@ -63,4 +63,13 @@ public class JobService {
         List<Job> activeJobs = jobRepository.findByIsActiveTrue();
         return JobDTO.convertToDTO(activeJobs);
     }
+    public Boolean checkIfJobExistsByTitle(String title) {
+        try {
+            return jobRepository.existsByTitle(title);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 }
