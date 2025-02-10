@@ -14,7 +14,7 @@ public class JobDTO {
     private String description;
     private String location;
     private Double salary;
-    
+
     // Additional fields
     private UserDTO recruiter;
     private String jobType;
@@ -29,9 +29,14 @@ public class JobDTO {
             jobDto.setDescription(job.getDescription());
             jobDto.setLocation(job.getLocation());
             jobDto.setSalary(job.getSalary());
+            jobDto.setRecruiter(UserDTO.convertToDTO(job.getRecruiter()));
+            jobDto.setJobType(job.getJobType().toString());
+            jobDto.setActive(job.isActive());
+
         }
         return jobDto;
     }
+
     public static List<JobDTO> convertToDTO(List<Job> jobList) {
         List<JobDTO> jobDtoList = new ArrayList<>();
         if (jobList != null && !jobList.isEmpty()) {
@@ -49,6 +54,7 @@ public class JobDTO {
             job.setDescription(jobDto.getDescription());
             job.setLocation(jobDto.getLocation());
             job.setSalary(job.getSalary());
+            
         }
         return job;
     }
