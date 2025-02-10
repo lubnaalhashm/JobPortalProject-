@@ -14,6 +14,11 @@ public class JobDTO {
     private String description;
     private String location;
     private Double salary;
+    
+    // Additional fields
+    private UserDTO recruiter;
+    private String jobType;
+    private boolean isActive;
 
 
     public static JobDTO convertToDTO(Job job) {
