@@ -39,4 +39,14 @@ public class JobController {
             return null;
         }
     }
+    @PostMapping(value ="add")
+    public JobDTO addJob(@RequestBody JobDTO dto) {
+        JobDTO entity = new JobDTO();
+        try {
+            entity = jobService.addJob(dto);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return entity;
+    }
 }
