@@ -24,6 +24,7 @@ public class JobService {
         Job job = jobRepository.findById(id).orElse(null);
         return JobDTO.convertToDTO(job);
     }
+
     public JobDTO addJob(JobDTO jobDto) {
         if (HelperUtils.isNull(jobDto.getId()) || !checkIfJobExists(jobDto.getId())) {
             Job job = JobDTO.convertFromDTO(jobDto);
@@ -33,8 +34,20 @@ public class JobService {
         return new JobDTO();
     }
 
+    public JobDTO updateJob(JobDTO jobDto) {
+        if (HelperUtils.isNotNull(jobDto)) {
+            Job job = JobDTO.convertFromDTO(jobDto);
+            job = jobRepository.save(job);
+            return JobDTO.convertToDTO(job);
+        }
+        return new JobDTO();
+    }
+
+
+
     public boolean checkIfJobExists(Integer id) {
         return jobRepository.existsById(id);
     }
+
 
 }
