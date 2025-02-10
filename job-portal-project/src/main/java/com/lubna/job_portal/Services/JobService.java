@@ -3,6 +3,7 @@ package com.lubna.job_portal.Services;
 import com.lubna.job_portal.DTOs.JobDTO;
 import com.lubna.job_portal.Models.Job;
 import com.lubna.job_portal.Repositories.JobRepository;
+import com.lubna.job_portal.Utils.HelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,13 @@ public class JobService {
     @Autowired
     private JobRepository jobRepository;
 
-    public List<JobDTO>getAllJobs(){
+    public List<JobDTO> getAllJobs() {
         List<Job> jobs = jobRepository.findAll();
         return JobDTO.convertToDTO(jobs);
     }
-    
+
+    public JobDTO getJobById(Integer id) {
+        Job job = jobRepository.findById(id).orElse(null);
+        return JobDTO.convertToDTO(job);
+    }
 }
