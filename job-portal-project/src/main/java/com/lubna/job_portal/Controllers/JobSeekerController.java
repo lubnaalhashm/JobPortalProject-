@@ -71,6 +71,15 @@ public class JobSeekerController {
             return false;
         }
     }
+    @GetMapping(value = "checkJobSeekerExists")
+    public Boolean checkIfJobSeekerExists(@RequestParam Integer jobSeekerId) {
+        try {
+            return jobSeekerService.checkIfJobSeekerExists(jobSeekerId);
+        } catch (Exception e) {
+            logger.error("Error while checking if job seeker exists: {}", e.getMessage());
+            return false;
+        }
+    }
     @GetMapping(value = "getByEmail")
     public JobSeekerDTO getJobSeekerByEmail(@RequestParam String email) {
         try {
@@ -89,5 +98,5 @@ public class JobSeekerController {
             return new JobSeekerDTO();
         }
     }
-    
+
 }
