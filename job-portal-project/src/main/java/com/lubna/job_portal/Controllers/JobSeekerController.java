@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -30,6 +31,15 @@ public class JobSeekerController {
             logger.error("Error while fetching all job seekers: {}", e.getMessage());
         }
         return jobSeekerDTOList;
+    }
+    @GetMapping(value = "getById")
+    public JobSeekerDTO getJobSeekerById(@RequestParam(value = "jobSeekerId") Integer id) {
+        try {
+            return jobSeekerService.getJobSeekerById(id);
+        } catch (Exception e) {
+            logger.error("Error while fetching job seeker by ID: {}", e.getMessage());
+            return new JobSeekerDTO();
+        }
     }
 
 }
