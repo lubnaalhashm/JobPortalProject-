@@ -61,5 +61,14 @@ public class JobSeekerController {
         }
         return jobSeekerDTO;
     }
-    
+    @DeleteMapping(value = "delete")
+    public Boolean deleteJobSeeker(@RequestBody JobSeekerDTO dto) {
+        try {
+            return jobSeekerService.deleteJobSeeker(dto.getId());
+        } catch (Exception e) {
+            logger.error("Error while deleting job seeker: {}", e.getMessage());
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
