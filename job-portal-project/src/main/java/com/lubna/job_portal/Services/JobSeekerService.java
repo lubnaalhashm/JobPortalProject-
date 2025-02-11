@@ -54,6 +54,17 @@ public class JobSeekerService {
         return false;
     }
 
+    public JobSeekerDTO getJobSeekerByUserId(Integer userId) {
+        if (HelperUtils.isNotNull(userId)) {
+            Optional<JobSeeker> jobSeekerOptional = jobSeekerRepository.findByUserId(userId);
+            if (jobSeekerOptional.isPresent()) {
+                return JobSeekerDTO.convertToDTO(jobSeekerOptional.get());
+            }
+        }
+        return new JobSeekerDTO();
+    }
+
+
     public boolean checkIfJobSeekerExists(Integer id) {
         return jobSeekerRepository.existsById(id);
     }
