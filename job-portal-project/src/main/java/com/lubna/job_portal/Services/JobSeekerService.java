@@ -26,6 +26,27 @@ public class JobSeekerService {
        return JobSeekerDTO.convertToDTO(entity);
    }
 
+    public JobSeekerDTO addJobSeeker(JobSeekerDTO jobSeekerDto) {
+        if (HelperUtils.isNull(jobSeekerDto.getId()) || !checkIfJobSeekerExists(jobSeekerDto.getId())) {
+            JobSeeker jobSeeker = JobSeekerDTO.convertFromDTO(jobSeekerDto);
+            jobSeeker = jobSeekerRepository.save(jobSeeker);
+            return JobSeekerDTO.convertToDTO(jobSeeker);
+        }
+        return new JobSeekerDTO();
+    }
+
+    public JobSeekerDTO updateJobSeeker(JobSeekerDTO jobSeekerDto) {
+        if (HelperUtils.isNotNull(jobSeekerDto)) {
+            JobSeeker jobSeeker = JobSeekerDTO.convertFromDTO(jobSeekerDto);
+            jobSeeker = jobSeekerRepository.save(jobSeeker);
+            return JobSeekerDTO.convertToDTO(jobSeeker);
+        }
+        return new JobSeekerDTO();
+    }
+
+    public boolean checkIfJobSeekerExists(Integer id) {
+        return jobSeekerRepository.existsById(id);
+    }
 }
 
 
