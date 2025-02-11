@@ -64,6 +64,15 @@ public class JobSeekerService {
         return new JobSeekerDTO();
     }
 
+    public JobSeekerDTO getJobSeekerByEmail(String email) {
+        if (HelperUtils.isNotNull(email)) {
+            Optional<JobSeeker> jobSeekerOptional = jobSeekerRepository.findByUserEmail(email);
+            if (jobSeekerOptional.isPresent()) {
+                return JobSeekerDTO.convertToDTO(jobSeekerOptional.get());
+            }
+        }
+        return new JobSeekerDTO();
+    }
 
     public boolean checkIfJobSeekerExists(Integer id) {
         return jobSeekerRepository.existsById(id);
