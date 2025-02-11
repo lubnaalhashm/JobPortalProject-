@@ -39,9 +39,9 @@ public class JobController {
             return null;
         }
     }
-
     @PostMapping(value = "add")
     public JobDTO addJob(@RequestBody JobDTO dto) {
+        logger.info("Received request to add job: {}", dto);
         JobDTO entity = new JobDTO();
         try {
             entity = jobService.addJob(dto);
@@ -49,8 +49,8 @@ public class JobController {
             System.out.println(e.getMessage());
         }
         return entity;
-    }
 
+    }
     @PostMapping(value = "update")
     public JobDTO updateJob(@RequestBody JobDTO dto) {
         JobDTO entity = new JobDTO();
