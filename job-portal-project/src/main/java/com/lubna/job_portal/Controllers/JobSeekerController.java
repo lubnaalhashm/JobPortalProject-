@@ -50,5 +50,16 @@ public class JobSeekerController {
         return jobSeekerDTO;
     }
 
-
+    @PostMapping(value = "update")
+    public JobSeekerDTO updateJobSeeker(@RequestBody JobSeekerDTO dto) {
+        JobSeekerDTO jobSeekerDTO = new JobSeekerDTO();
+        try {
+            jobSeekerDTO = jobSeekerService.updateJobSeeker(dto);
+        } catch (Exception e) {
+            logger.error("Error while updating job seeker: {}", e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        return jobSeekerDTO;
+    }
+    
 }
