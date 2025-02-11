@@ -80,5 +80,14 @@ public class JobSeekerController {
             return new JobSeekerDTO();
         }
     }
-
+    @GetMapping(value = "getByUserId")
+    public JobSeekerDTO getJobSeekerByUserId(@RequestParam(value = "userId") Integer userId) {
+        try {
+            return jobSeekerService.getJobSeekerByUserId(userId);
+        } catch (Exception e) {
+            logger.error("Error while fetching job seeker by user ID: {}", e.getMessage());
+            return new JobSeekerDTO();
+        }
+    }
+    
 }
