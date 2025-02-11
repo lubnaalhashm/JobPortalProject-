@@ -71,4 +71,14 @@ public class JobSeekerController {
             return false;
         }
     }
+    @GetMapping(value = "getByEmail")
+    public JobSeekerDTO getJobSeekerByEmail(@RequestParam String email) {
+        try {
+            return jobSeekerService.getJobSeekerByEmail(email);
+        } catch (Exception e) {
+            logger.error("Error while fetching job seeker by email: {}", e.getMessage());
+            return new JobSeekerDTO();
+        }
+    }
+
 }
