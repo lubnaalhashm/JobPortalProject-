@@ -45,6 +45,7 @@ public class JobController {
         JobDTO entity = new JobDTO();
         try {
             entity = jobService.addJob(dto);
+            logger.info("Job saved: {}", entity);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
