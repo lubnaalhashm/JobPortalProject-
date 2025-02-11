@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface JobSeekerRepository extends JpaRepository<JobSeeker, Integer> {
     //Check if a job Seeker exists by ID
     boolean existsById(Integer id);
+    JobSeeker getJobSeekerById(Integer id);
 
     // Find a job Seeker by their associated user ID
     Optional<JobSeeker> findByUserId(Integer userId);
