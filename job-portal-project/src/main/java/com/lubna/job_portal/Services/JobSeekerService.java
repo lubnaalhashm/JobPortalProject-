@@ -43,6 +43,16 @@ public class JobSeekerService {
         }
         return new JobSeekerDTO();
     }
+    public Boolean deleteJobSeeker(Integer id) {
+        if (HelperUtils.isNotNull(id) && checkIfJobSeekerExists(id)) {
+            JobSeeker jobSeeker = jobSeekerRepository.findById(id).orElse(null);
+            if (jobSeeker != null) {
+                jobSeekerRepository.delete(jobSeeker);
+                return true;
+            }
+        }
+        return false;
+    }
 
     public boolean checkIfJobSeekerExists(Integer id) {
         return jobSeekerRepository.existsById(id);
