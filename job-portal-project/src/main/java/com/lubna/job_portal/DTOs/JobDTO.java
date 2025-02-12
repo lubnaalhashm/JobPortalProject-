@@ -30,6 +30,7 @@ public class JobDTO {
             jobDto.setLocation(job.getLocation());
             jobDto.setSalary(job.getSalary());
             jobDto.setIsActive(job.isActive());
+            jobDto.setRecruiterId(job.getRecruiter() != null ? job.getRecruiter().getId() : null);
         }
         return jobDto;
     }
