@@ -50,7 +50,6 @@ public class JobApplicationDTO {
 
             JobSeeker jobSeeker = new JobSeeker();
             jobSeeker.setId(dto.getJobSeekerId());
-            jobApplication.setJobSeeker(jobSeeker);
 
             jobApplication.setCoverLetter(dto.getCoverLetter());
             jobApplication.setStatus(dto.getStatus() != null ? ApplicationStatus.valueOf(dto.getStatus()) : null); // Convert String to Enum
