@@ -10,6 +10,7 @@ import java.util.List;
 
 @Data
 public class JobDTO {
+    private Integer recruiterId;
     private Integer id;
     private String title;
     private String description;
