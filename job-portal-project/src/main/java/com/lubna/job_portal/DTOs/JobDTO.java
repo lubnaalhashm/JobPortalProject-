@@ -1,6 +1,7 @@
 package com.lubna.job_portal.DTOs;
 
 import com.lubna.job_portal.Models.Job;
+import com.lubna.job_portal.Models.User;
 import lombok.Data;
 
 
