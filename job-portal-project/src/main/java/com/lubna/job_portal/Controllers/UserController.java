@@ -50,7 +50,6 @@ public class UserController {
         try {
             userDTO = userService.addUser(dto);
         } catch (Exception e) {
-            logger.error("Error while adding user: {}", e.getMessage(), e); // Log the full stack trace
 //            logger.error("Error while adding user: {}", e.getMessage(), e); // Log the full stack trace
             System.out.println(e.getMessage());
         }
