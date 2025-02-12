@@ -40,27 +40,26 @@ public class JobSeekerController {
     }
     @PostMapping(value = "add")
     public JobSeekerDTO addJobSeeker(@RequestBody JobSeekerDTO dto) {
-        JobSeekerDTO jobSeekerDTO = new JobSeekerDTO();
         try {
-            jobSeekerDTO = jobSeekerService.addJobSeeker(dto);
+            return jobSeekerService.addJobSeeker(dto);
         } catch (Exception e) {
             logger.error("Error while adding job seeker: {}", e.getMessage());
-            System.out.println(e.getMessage());
+            return new JobSeekerDTO();
         }
-        return jobSeekerDTO;
     }
+
 
     @PostMapping(value = "update")
     public JobSeekerDTO updateJobSeeker(@RequestBody JobSeekerDTO dto) {
-        JobSeekerDTO jobSeekerDTO = new JobSeekerDTO();
         try {
-            jobSeekerDTO = jobSeekerService.updateJobSeeker(dto);
+            return jobSeekerService.updateJobSeeker(dto);
         } catch (Exception e) {
             logger.error("Error while updating job seeker: {}", e.getMessage());
-            System.out.println(e.getMessage());
+            return new JobSeekerDTO();
         }
-        return jobSeekerDTO;
     }
+
+
     @DeleteMapping(value = "delete")
     public Boolean deleteJobSeeker(@RequestBody JobSeekerDTO dto) {
         try {
