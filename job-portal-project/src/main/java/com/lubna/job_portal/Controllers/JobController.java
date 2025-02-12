@@ -18,7 +18,7 @@ public class JobController {
     @Autowired
     private JobService jobService;
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "getAllJob")
     public List<JobDTO> getAllJobs() {
         List<JobDTO> jobDtoList = new ArrayList<>();
         try {
