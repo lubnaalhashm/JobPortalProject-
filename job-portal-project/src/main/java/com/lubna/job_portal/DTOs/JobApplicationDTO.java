@@ -24,7 +24,6 @@ public class JobApplicationDTO {
         if (jobApplication != null) {
             dto.setId(jobApplication.getId());
             dto.setJobId(jobApplication.getJob() != null ? jobApplication.getJob().getId() : null); // Extract Job ID
-            dto.setJobSeekerId(jobApplication.getJobSeeker() != null ? jobApplication.getJobSeeker().getId() : null); // Extract JobSeeker ID
             dto.setStatus(jobApplication.getStatus() != null ? jobApplication.getStatus().name() : null); // Convert Enum to String
             dto.setCoverLetter(jobApplication.getCoverLetter());
             dto.setAppliedAt(jobApplication.getAppliedAt());
