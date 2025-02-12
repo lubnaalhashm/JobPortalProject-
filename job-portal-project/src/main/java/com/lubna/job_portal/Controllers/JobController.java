@@ -63,7 +63,7 @@ public class JobController {
         return entity;
     }
 
-    @DeleteMapping(value = "delete")
+    @DeleteMapping(value = "deleteJob")
     public Boolean deleteJob(@RequestBody JobDTO dto) {
         try {
             return jobService.deleteJob(dto.getId());
