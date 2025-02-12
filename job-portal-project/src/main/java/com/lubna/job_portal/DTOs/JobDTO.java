@@ -22,6 +22,7 @@ public class JobDTO {
     private String jobType;
     private boolean isActive;
 
+    private Boolean isActive;
 
     public static JobDTO convertToDTO(Job job) {
         JobDTO jobDto = new JobDTO();
