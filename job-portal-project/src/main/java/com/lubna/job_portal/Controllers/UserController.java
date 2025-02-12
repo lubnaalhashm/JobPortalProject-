@@ -41,6 +41,7 @@ public class UserController {
             logger.error("Error while fetching user by ID: {}", e.getMessage());
             return new UserDTO();
         }
+
     }
 
     @PostMapping(value = "add")
