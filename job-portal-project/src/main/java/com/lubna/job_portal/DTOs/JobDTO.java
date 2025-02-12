@@ -29,10 +29,6 @@ public class JobDTO {
             jobDto.setDescription(job.getDescription());
             jobDto.setLocation(job.getLocation());
             jobDto.setSalary(job.getSalary());
-            jobDto.setRecruiter(UserDTO.convertToDTO(job.getRecruiter()));
-            jobDto.setJobType(job.getJobType().toString());
-            jobDto.setActive(job.isActive());
-
         }
         return jobDto;
     }
