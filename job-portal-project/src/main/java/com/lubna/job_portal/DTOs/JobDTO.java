@@ -29,6 +29,7 @@ public class JobDTO {
             jobDto.setDescription(job.getDescription());
             jobDto.setLocation(job.getLocation());
             jobDto.setSalary(job.getSalary());
+            jobDto.setIsActive(job.isActive());
         }
         return jobDto;
     }
