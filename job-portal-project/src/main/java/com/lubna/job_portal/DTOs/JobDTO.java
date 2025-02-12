@@ -18,9 +18,6 @@ public class JobDTO {
     private Double salary;
 
     // Additional fields
-    private UserDTO recruiter;
-    private String jobType;
-    private boolean isActive;
 
     private Boolean isActive;
 
