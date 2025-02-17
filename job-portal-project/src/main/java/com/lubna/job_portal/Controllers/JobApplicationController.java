@@ -53,5 +53,16 @@ public class JobApplicationController {
         return jobApplicationDTO;
     }
 
+    @PostMapping(value = "update")
+    public JobApplicationDTO updateApplication(@RequestBody JobApplicationDTO dto) {
+        JobApplicationDTO jobApplicationDTO = new JobApplicationDTO();
+        try {
+            jobApplicationDTO = jobApplicationsService.updateApplication(dto);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return jobApplicationDTO;
+    }
 
+   
 }
