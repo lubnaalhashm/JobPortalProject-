@@ -21,5 +21,16 @@ public class JobApplicationController {
     @Autowired
     private JobApplicationsService jobApplicationsService;
 
+    @GetMapping(value = "getAll")
+    public List<JobApplicationDTO> getAllApplications() {
+        List<JobApplicationDTO> jobApplicationDTOList = new ArrayList<>();
+        try {
+            jobApplicationDTOList.addAll(jobApplicationsService.fetchAllApplications());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return jobApplicationDTOList;
+    }
+
 
 }
