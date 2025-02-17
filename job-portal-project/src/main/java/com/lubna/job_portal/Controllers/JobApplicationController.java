@@ -17,5 +17,6 @@ import java.util.List;
 @RequestMapping(value = "jobApplication")
 public class JobApplicationController {
 
-
+    private final Logger logger = LoggerFactory.getLogger(JobApplicationController.class);
+  
 }
