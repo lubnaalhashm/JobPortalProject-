@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Data
 public class BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "created_at", updatable = false)
