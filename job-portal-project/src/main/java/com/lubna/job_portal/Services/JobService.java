@@ -14,6 +14,8 @@ public class JobService {
 
     @Autowired
     private JobRepository jobRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public List<JobDTO> getAllJobs() {
         List<Job> jobs = jobRepository.findAll();
