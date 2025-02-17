@@ -84,5 +84,15 @@ public class JobApplicationController {
         }
     }
 
+    @PostMapping(value = "changeStatus")
+    public Boolean changeApplicationStatus(@RequestParam Integer applicationId, @RequestParam String newStatus) {
+        try {
+            return jobApplicationsService.changeApplicationStatus(applicationId, newStatus);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 
 }
