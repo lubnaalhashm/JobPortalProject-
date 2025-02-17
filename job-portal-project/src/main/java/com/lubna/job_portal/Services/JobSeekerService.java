@@ -4,6 +4,7 @@ import com.lubna.job_portal.DTOs.JobSeekerDTO;
 import com.lubna.job_portal.Models.JobSeeker;
 import com.lubna.job_portal.Models.User;
 import com.lubna.job_portal.Repositories.JobSeekerRepository;
+import com.lubna.job_portal.Repositories.UserRepository;
 import com.lubna.job_portal.Utils.HelperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
