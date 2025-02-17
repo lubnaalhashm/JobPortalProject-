@@ -1,5 +1,6 @@
 package com.lubna.job_portal.Models;
 
+import com.lubna.job_portal.Enum.JobType;
 import jakarta.persistence.*;
 import lombok.Data;
 
