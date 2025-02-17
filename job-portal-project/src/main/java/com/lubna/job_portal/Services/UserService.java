@@ -46,6 +46,7 @@ public class UserService {
         User savedUser = userRepository.save(entity);
         return UserDTO.convertToDTO(savedUser);
     }
+    public Boolean changeUserRole(Integer id, String newRole) {
 
     public UserDTO updateUser(UserDTO dto) {
         if (HelperUtils.isNull(dto) || HelperUtils.isNull(dto.getId())) {
