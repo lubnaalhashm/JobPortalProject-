@@ -46,6 +46,10 @@ public class JobSeekerService {
 
             JobSeeker jobSeeker = new JobSeeker(user, dto.getResumeUrl(), dto.getPortfolioUrl(), dto.getPhoneNumber(), dto.getAddress());
             jobSeeker = jobSeekerRepository.save(jobSeeker);
+            return convertToDTO(jobSeeker);
+        } catch (Exception e) {
+            logger.error("Error while adding job seeker: {}", e.getMessage());
+            throw new RuntimeException("Failed to add job seeker: " + e.getMessage());
         }
     }
 
