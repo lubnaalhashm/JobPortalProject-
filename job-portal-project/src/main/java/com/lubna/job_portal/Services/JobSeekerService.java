@@ -29,6 +29,22 @@ public class JobSeekerService {
     }
 
     // Get Job Seeker by ID
+    public JobSeekerDTO getJobSeekerById(Integer id) {
+        JobSeeker entity = jobSeekerRepository.getJobSeekerById(id);
+        return convertToDTO(entity);
+    }
+
+
+    public JobSeekerDTO addJobSeeker(JobSeekerDTO dto) {
+        try {
+            if (dto.getUser() == null || dto.getUser().getId() == null) {
+                throw new RuntimeException("User ID is required to create a Job Seeker");
+            }
+
+            User user = userRepository.findById(dto.getUser().getId())  // FIXED: Correctly retrieve User ID
+                    .orElseThrow(() -> new RuntimeException("User not found with ID: " + dto.getUser().getId()));
+
+            JobSeeker jobSeeker = new JobSeeker(user, dto.getResumeUrl(), dto.getPortfolioUrl(), dto.getPhoneNumber(), dto.getAddress());
             jobSeeker = jobSeekerRepository.save(jobSeeker);
             return JobSeekerDTO.convertToDTO(jobSeeker);
         }
