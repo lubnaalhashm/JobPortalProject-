@@ -18,5 +18,8 @@ import java.util.List;
 public class JobApplicationController {
 
     private final Logger logger = LoggerFactory.getLogger(JobApplicationController.class);
-  
+    @Autowired
+    private JobApplicationsService jobApplicationsService;
+
+
 }
