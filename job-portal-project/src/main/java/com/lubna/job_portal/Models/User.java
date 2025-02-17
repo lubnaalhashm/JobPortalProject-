@@ -1,5 +1,6 @@
 package com.lubna.job_portal.Models;
 
+import com.lubna.job_portal.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
