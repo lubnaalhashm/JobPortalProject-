@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class JobApplication extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "job_seeker_id", nullable = false)
-    private JobSeeker jobSeeker;
 
     @ManyToOne
     @JoinColumn(name = "job_id", nullable = false)
