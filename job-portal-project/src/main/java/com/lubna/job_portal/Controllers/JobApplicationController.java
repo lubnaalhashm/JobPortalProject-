@@ -32,5 +32,15 @@ public class JobApplicationController {
         return jobApplicationDTOList;
     }
 
+    @GetMapping(value = "getById")
+    public JobApplicationDTO getApplicationById(@RequestParam(value = "applicationId") Integer id) {
+        try {
+            return jobApplicationsService.getApplicationById(id);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new JobApplicationDTO();
+        }
+    }
+
 
 }
