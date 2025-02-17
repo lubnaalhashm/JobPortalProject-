@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Optional;
 
+import static com.lubna.job_portal.DTOs.JobSeekerDTO.convertToDTO;
 @Service
 public class JobSeekerService {
     @Autowired
