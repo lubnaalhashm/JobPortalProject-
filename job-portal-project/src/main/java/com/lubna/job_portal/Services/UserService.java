@@ -42,6 +42,7 @@ public class UserService {
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
         entity.setUsername(dto.getUsername());
+        entity.setRole(dto.getRole() != null ? Role.valueOf(dto.getRole()) : Role.JOB_SEEKER);
         User savedUser = userRepository.save(entity);
         return UserDTO.convertToDTO(savedUser);
     }
