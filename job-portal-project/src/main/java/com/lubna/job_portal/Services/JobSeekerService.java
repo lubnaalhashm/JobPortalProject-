@@ -17,6 +17,9 @@ import java.util.Optional;
 import static com.lubna.job_portal.DTOs.JobSeekerDTO.convertToDTO;
 @Service
 public class JobSeekerService {
+    private static final Logger logger = LoggerFactory.getLogger(JobSeekerService.class);
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private JobSeekerRepository jobSeekerRepository;
 
