@@ -38,6 +38,7 @@ public class JobService {
         return JobDTO.convertToDTO(job);
     }
 
+
     public JobDTO updateJob(JobDTO jobDto) {
         if (HelperUtils.isNotNull(jobDto)) {
             Job existingJob = jobRepository.findById(jobDto.getId())
@@ -72,6 +73,7 @@ public class JobService {
         List<Job> activeJobs = jobRepository.findByIsActiveTrue();
         return JobDTO.convertToDTO(activeJobs);
     }
+
     public Boolean checkIfJobExistsByTitle(String title) {
         try {
             return jobRepository.existsByTitle(title);
