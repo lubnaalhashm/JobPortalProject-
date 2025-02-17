@@ -46,7 +46,6 @@ public class JobSeekerService {
 
             JobSeeker jobSeeker = new JobSeeker(user, dto.getResumeUrl(), dto.getPortfolioUrl(), dto.getPhoneNumber(), dto.getAddress());
             jobSeeker = jobSeekerRepository.save(jobSeeker);
-            return JobSeekerDTO.convertToDTO(jobSeeker);
         }
         return new JobSeekerDTO();
     }
