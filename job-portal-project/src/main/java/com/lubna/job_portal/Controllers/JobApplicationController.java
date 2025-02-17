@@ -74,5 +74,15 @@ public class JobApplicationController {
         }
     }
 
+    @GetMapping(value = "checkApplicationAvailability")
+    public Boolean checkApplicationAvailability(@RequestParam Integer jobSeekerId, @RequestParam Integer jobId) {
+        try {
+            return jobApplicationsService.checkApplicationBySeekerAndJob(jobSeekerId, jobId);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 
 }
