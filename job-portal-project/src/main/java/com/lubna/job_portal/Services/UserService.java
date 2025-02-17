@@ -17,6 +17,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     //Get all users
     public List<UserDTO> getAllUser() {
         List<User> users = userRepository.findAll();
@@ -47,6 +48,20 @@ public class UserService {
         return UserDTO.convertToDTO(savedUser);
     }
     public Boolean changeUserRole(Integer id, String newRole) {
+        try {
+            Optional<User> optionalUser = userRepository.findById(id);
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                user.setRole(Role.valueOf(newRole.toUpperCase())); // Convert String to Enum
+                userRepository.save(user);
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
 
     public UserDTO updateUser(UserDTO dto) {
         if (HelperUtils.isNull(dto) || HelperUtils.isNull(dto.getId())) {
