@@ -34,6 +34,8 @@ public class JobApplication extends BaseEntity {
 
     // Constructors
     public JobApplication() {
+        this.status = ApplicationStatus.PENDING; // Default status
+        this.appliedAt = LocalDateTime.now();
     }
 
     public JobApplication(JobSeeker jobSeeker, Job job, String coverLetter) {
