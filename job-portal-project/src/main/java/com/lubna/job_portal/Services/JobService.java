@@ -40,7 +40,6 @@ public class JobService {
 
     public JobDTO updateJob(JobDTO jobDto) {
         if (HelperUtils.isNotNull(jobDto)) {
-            Job job = JobDTO.convertFromDTO(jobDto);
             job = jobRepository.save(job);
             return JobDTO.convertToDTO(job);
         }
