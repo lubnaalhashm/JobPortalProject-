@@ -26,6 +26,9 @@ public class JobApplication extends BaseEntity {
     @Column
     private ApplicationStatus status;
 
+    @Enumerated(EnumType.STRING)
+    @Column
+    private JobType jobType;
     @Column
     private LocalDateTime appliedAt;
 
