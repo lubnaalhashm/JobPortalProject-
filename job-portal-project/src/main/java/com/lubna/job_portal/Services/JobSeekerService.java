@@ -29,14 +29,6 @@ public class JobSeekerService {
     }
 
     // Get Job Seeker by ID
-   public JobSeekerDTO getJobSeekerById(Integer id) {
-       JobSeeker entity = jobSeekerRepository.getJobSeekerById(id);
-       return JobSeekerDTO.convertToDTO(entity);
-   }
-
-    public JobSeekerDTO addJobSeeker(JobSeekerDTO jobSeekerDto) {
-        if (HelperUtils.isNull(jobSeekerDto.getId()) || !checkIfJobSeekerExists(jobSeekerDto.getId())) {
-            JobSeeker jobSeeker = JobSeekerDTO.convertFromDTO(jobSeekerDto);
             jobSeeker = jobSeekerRepository.save(jobSeeker);
             return JobSeekerDTO.convertToDTO(jobSeeker);
         }
