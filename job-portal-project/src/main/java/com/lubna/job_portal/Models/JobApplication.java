@@ -44,5 +44,6 @@ public class JobApplication extends BaseEntity {
         this.coverLetter = coverLetter;
         this.status = ApplicationStatus.PENDING;
         this.appliedAt = LocalDateTime.now();
+        this.jobType = jobType;
     }
 }
