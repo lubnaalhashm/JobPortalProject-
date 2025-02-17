@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "job_applications")
 public class JobApplication extends BaseEntity {
+
     @ManyToOne
     @JoinColumn(name = "job_seeker_id", nullable = false)
     private JobSeeker applicant;
@@ -29,6 +30,7 @@ public class JobApplication extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column
     private JobType jobType;
+
     @Column
     private LocalDateTime appliedAt;
 
