@@ -25,7 +25,6 @@ public class JobSeekerService {
 
     public List<JobSeekerDTO> getAllJobSeekers() {
         List<JobSeeker> jobSeekers = jobSeekerRepository.findAll();
-        return JobSeekerDTO.convertToDTO(jobSeekers);
     }
 
     // Get Job Seeker by ID
