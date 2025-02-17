@@ -20,7 +20,7 @@ public class User extends BaseEntity {
 
    /* @Enumerated(EnumType.STRING) // Use EnumType.STRING for storing role as a string in the database
     @Column(nullable = false)
-    private Role role;*/
+    private Role role;
 
     private String username;
     private Boolean isActive = true; // Default active status
