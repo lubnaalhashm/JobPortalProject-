@@ -1,6 +1,7 @@
 package com.lubna.job_portal.Services;
 
 import com.lubna.job_portal.DTOs.UserDTO;
+import com.lubna.job_portal.Enum.Role;
 import com.lubna.job_portal.Models.User;
 import com.lubna.job_portal.Repositories.UserRepository;
 import com.lubna.job_portal.Utils.HelperUtils;
