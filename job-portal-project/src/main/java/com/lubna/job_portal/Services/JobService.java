@@ -30,12 +30,6 @@ public class JobService {
     }
 
     public JobDTO addJob(JobDTO jobDto) {
-        if (HelperUtils.isNull(jobDto.getId()) || !checkIfJobExists(jobDto.getId())) {
-            Job job = JobDTO.convertFromDTO(jobDto);
-            job = jobRepository.save(job);
-            return JobDTO.convertToDTO(job);
-        }
-        return new JobDTO();
     }
 
     public JobDTO updateJob(JobDTO jobDto) {
