@@ -64,5 +64,15 @@ public class JobApplicationController {
         return jobApplicationDTO;
     }
 
-   
+    @DeleteMapping(value = "delete")
+    public Boolean deleteApplication(@RequestBody JobApplicationDTO dto) {
+        try {
+            return jobApplicationsService.deleteApplication(dto.getId());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+
 }
