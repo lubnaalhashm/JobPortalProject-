@@ -50,9 +50,6 @@ public class JobSeekerService {
         return new JobSeekerDTO();
     }
 
-    public JobSeekerDTO updateJobSeeker(JobSeekerDTO jobSeekerDto) {
-        if (HelperUtils.isNotNull(jobSeekerDto)) {
-            JobSeeker jobSeeker = JobSeekerDTO.convertFromDTO(jobSeekerDto);
             jobSeeker = jobSeekerRepository.save(jobSeeker);
             return JobSeekerDTO.convertToDTO(jobSeeker);
         }
