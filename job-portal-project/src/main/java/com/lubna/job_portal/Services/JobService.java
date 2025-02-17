@@ -40,6 +40,12 @@ public class JobService {
 
     public JobDTO updateJob(JobDTO jobDto) {
         if (HelperUtils.isNotNull(jobDto)) {
+            Job existingJob = jobRepository.findById(jobDto.getId())
+                    .orElseThrow(() -> new RuntimeException("Job not found"));
+
+            User recruiter = existingJob.getRecruiter();
+
+            Job job = JobDTO.convertFromDTO(jobDto, recruiter);
             job = jobRepository.save(job);
             return JobDTO.convertToDTO(job);
         }
