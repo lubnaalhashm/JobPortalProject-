@@ -94,5 +94,13 @@ public class JobApplicationController {
         }
     }
 
-
+    @GetMapping(value = "getBySeekerAndJob")
+    public JobApplicationDTO getApplicationBySeekerAndJob(@RequestParam Integer jobSeekerId, @RequestParam Integer jobId) {
+        try {
+            return jobApplicationsService.getApplicationBySeekerAndJob(jobSeekerId, jobId);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new JobApplicationDTO();
+        }
+    }
 }
