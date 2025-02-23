@@ -9,7 +9,9 @@ import com.lubna.job_portal.Repositories.UserRepository;
 import com.lubna.job_portal.Utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthService {
 
     @Autowired
@@ -17,18 +19,24 @@ public class AuthService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private JwtUtil jwtUtil;
+
+
+    // Sign-in method for JWT generation
     public String signIn(SignInRequestDTO dto) {
+        // Find user by username
         User user = userRepository.findByUsername(dto.getUsername())
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid username or password"));
 
+        // Check password match
         if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
             throw new InvalidCredentialsException("Invalid username or password");
         }
 
         // Generate JWT token
-        return jwtUtil.generateToken(user.getUsername());
+        return jwtUtil.generateToken(user.getUsername(), user.getEmail(), user.getRole().name());
     }
     public void signUp(SignUpRequestDTO dto) {
         if (userRepository.findByUsername(dto.getUsername()).isPresent()) {
@@ -38,6 +46,12 @@ public class AuthService {
             throw new UserAlreadyExistsException("Email already exists");
         }
 
-        // Proceed with user creation logic
+        User newUser = new User();
+        newUser.setUsername(dto.getUsername());
+        newUser.setEmail(dto.getEmail());
+        newUser.setPassword(passwordEncoder.encode(dto.getPassword()));
+        newUser.setRole(dto.getRole());
+
+        userRepository.save(newUser);
     }
 }
